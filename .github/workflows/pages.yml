@@ -5,6 +5,10 @@ on:
   push:
     branches: [ main ]
 
+defaults:
+  run:
+    working-directory: front
+
 # Allow one concurrent deployment
 concurrency:
   group: "pages"
@@ -22,7 +26,6 @@ jobs:
           node-version: 16
           # cache: 'npm'
 
-      - run: cd front
       - run: yarn
       - run: yarn run build
         env:
@@ -31,7 +34,7 @@ jobs:
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'dist/'
+          path: 'front/dist/'
 
   # Deploy job
   deploy:
