@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Item } from "./Item";
-import { addTodoItem, removeTodoItem, toggleIsChecked } from "../redux/slice";
+import {
+  addTodoItem,
+  editTodoContent,
+  removeTodoItem,
+  toggleIsChecked,
+} from "../redux/slice";
 import { Paper, FormGroup, IconButton } from "@mui/material";
 import { AddCircle } from "@mui/icons-material";
 
 export const List = () => {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.todoItems);
-
-  const onClickAdd = () => {
-    dispatch(addTodoItem());
-  };
 
   return (
     <div
@@ -44,6 +45,9 @@ export const List = () => {
               key={`todo_item_${item.id}`}
               content={item.content}
               isChecked={item.isChecked}
+              onChangeInput={(e) =>
+                dispatch(editTodoContent({ index, newContent: e.target.value }))
+              }
               onClickCheckbox={() => dispatch(toggleIsChecked({ index }))}
               onClickDelete={() => dispatch(removeTodoItem({ index }))}
             />

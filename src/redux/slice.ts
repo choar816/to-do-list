@@ -26,6 +26,10 @@ export const todoSlice = createSlice({
       const { index } = action.payload;
       state.items.splice(index, 1);
     },
+    editTodoContent: (state, action) => {
+      const { index, newContent } = action.payload;
+      state.items[index].content = newContent;
+    },
     toggleIsChecked: (state, action) => {
       const { index } = action.payload;
       state.items[index].isChecked = !state.items[index].isChecked;
@@ -33,5 +37,5 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { addTodoItem, removeTodoItem, toggleIsChecked } =
+export const { addTodoItem, removeTodoItem, editTodoContent, toggleIsChecked } =
   todoSlice.actions;
