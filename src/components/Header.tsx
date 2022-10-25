@@ -1,13 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
-} from "@mui/material";
-import { Home } from "@mui/icons-material";
+import { Box, AppBar, Toolbar, Button } from "@mui/material";
+import { ListAlt } from "@mui/icons-material";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -15,20 +8,15 @@ export const Header = () => {
   return (
     <Box sx={{ flexGrow: 1, width: "100%", zIndex: 10 }}>
       <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Button
             color="inherit"
-            aria-label="home"
-            sx={{ mr: 2 }}
+            startIcon={<ListAlt />}
             onClick={() => navigate("/")}
+            sx={{ userSelect: "none", fontSize: 16 }}
           >
-            <Home />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             TO DO LIST
-          </Typography>
+          </Button>
           <Button color="inherit" onClick={() => navigate("/login")}>
             Login
           </Button>
