@@ -1,7 +1,17 @@
-import { Paper, FormGroup, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { Item } from "./Item";
+import { addTodoItem, removeTodoItem, toggleIsChecked } from "../redux/slice";
+import { Paper, FormGroup, IconButton } from "@mui/material";
+import { AddCircle } from "@mui/icons-material";
 
 export const List = () => {
+  const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.todoItems);
+
+  const onClickAdd = () => {
+    dispatch(addTodoItem());
+  };
+
   return (
     <div
       style={{
@@ -22,22 +32,25 @@ export const List = () => {
           maxWidth: 500,
           height: "70vh",
           maxHeight: 700,
-          padding: { xs: 2, sm: 5 },
+          py: { xs: 2, sm: 5 },
+          px: { xs: 1, sm: 4 },
         }}
       >
         <FormGroup
           sx={{ height: "100%", overflowY: "scroll", flexWrap: "nowrap" }}
         >
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
+          {items.map((item, index) => (
+            <Item
+              key={`todo_item_${item.id}`}
+              content={item.content}
+              isChecked={item.isChecked}
+              onClickCheckbox={() => dispatch(toggleIsChecked({ index }))}
+              onClickDelete={() => dispatch(removeTodoItem({ index }))}
+            />
+          ))}
+          <IconButton onClick={() => dispatch(addTodoItem())}>
+            <AddCircle />
+          </IconButton>
         </FormGroup>
       </Paper>
     </div>
