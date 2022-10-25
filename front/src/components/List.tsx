@@ -54,9 +54,11 @@ export const List = () => {
               onClickDelete={() => dispatch(removeTodoItem({ index }))}
             />
           ))}
-          <IconButton onClick={() => dispatch(addTodoItem())}>
-            <AddCircle />
-          </IconButton>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <IconButton onClick={() => dispatch(addTodoItem())}>
+              <AddCircle />
+            </IconButton>
+          </div>
         </FormGroup>
       </Paper>
     </div>
