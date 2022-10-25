@@ -3,30 +3,43 @@ import { Item } from "./Item";
 
 export const List = () => {
   return (
-    <Paper
-      elevation={12}
-      sx={{
-        width: "90vw",
-        maxWidth: 500,
-        height: "80vh",
-        maxHeight: 700,
-        padding: { xs: 2, sm: 5 },
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        flexGrow: 1,
+        padding: 20,
+        backgroundColor: "#e6e6e6",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <FormGroup
-        sx={{ height: "100%", overflowY: "scroll", flexWrap: "nowrap" }}
+      <Paper
+        elevation={12}
+        sx={{
+          width: "90vw",
+          maxWidth: 500,
+          height: "70vh",
+          maxHeight: 700,
+          padding: { xs: 2, sm: 5 },
+        }}
       >
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-        <Item />
-      </FormGroup>
-    </Paper>
+        <FormGroup
+          sx={{ height: "100%", overflowY: "scroll", flexWrap: "nowrap" }}
+        >
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+        </FormGroup>
+      </Paper>
+    </div>
   );
 };
