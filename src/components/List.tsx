@@ -11,7 +11,9 @@ import { AddCircle } from "@mui/icons-material";
 
 export const List = () => {
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.todoItems);
+  const { items } = useSelector(
+    (state: { items: TodoItem[]; lastId: number }) => state
+  );
 
   return (
     <div
@@ -40,7 +42,7 @@ export const List = () => {
         <FormGroup
           sx={{ height: "100%", overflowY: "scroll", flexWrap: "nowrap" }}
         >
-          {items.map((item, index) => (
+          {items.map((item: TodoItem, index: number) => (
             <Item
               key={`todo_item_${item.id}`}
               content={item.content}
