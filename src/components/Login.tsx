@@ -28,8 +28,8 @@ export const Login = () => {
       >
         <TextField id="id" label="id" variant="outlined" />
         <TextField id="password" label="password" variant="outlined" />
-        <Button variant="contained">Sign in</Button>
       </section>
+      <Button variant="contained">Sign in</Button>
       <Button onClick={() => navigate("/join")}>Not a member?</Button>
     </div>
   );

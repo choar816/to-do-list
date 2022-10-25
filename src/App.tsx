@@ -3,8 +3,8 @@ import { PageLayout } from "./components/PageLayout";
 import { List } from "./components/List";
 import { Login } from "./components/Login";
 import { Join } from "./components/Join";
-import "./App.css";
 import { Error } from "./components/Error";
+import "./App.css";
 
 function App() {
   return (
